@@ -1,0 +1,49 @@
+<div class="entries">
+  <div class="wrap-card">
+    <div class="card s1" data-aos="fade-down"
+     data-aos-offset="500"
+     data-aos-duration="500">
+      <h2>
+        <span class="k1">
+          Food is not rational.
+        </span>
+        <br>
+        <span class="k2">
+          Food is culture, habit, craving and identity.
+        </span>
+        <br />
+        <span class="quote">
+          <em> -Jonathan Safran Foer</em>
+        </span>
+      </h2>
+      <div class="btn-group">
+        <button mat-raised-button color="primary" (click)="onMenu()">{{'home.btn-menu' | translate}}</button>
+        <button mat-raised-button color="primary" (click)="onCart()">{{'home.btn-order' | translate}}</button>
+      </div>
+    </div>
+    <div class="card img">
+      <div data-aos="fade-left"
+     data-aos-offset="500"
+     data-aos-duration="500" class="best" *ngFor="let item of items">
+        <h2><span class="best1">{{"home.best" | translate}}: </span> <span class="best2">{{item?.recipe_name}}</span></h2>
+        <img class="image" [src]="item?.image" alt="me">
+      </div>
+    </div>
+  </div>
+
+  <div data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000"
+     data-aos-offset="30" class="so-secction">
+    <h2 class="text-purple">{{"home.special-offer" | translate}}</h2>
+    <h3 *ngIf="!specials?.length">Coming Soon</h3>
+    <div class="wrapper2">
+      <div class="card2" *ngFor="let special of specials" (click)="openDialog(special)">
+        <img [src]="special.image" alt="me">
+        <p data-aos="zoom-in" data-aos-delay="500" class="disc">{{special.disc}}</p>
+        <div class="detail-so">
+          <p class="recipe_name">{{special.recipe_name}}</p>
+          <p class="price"><span>{{special.price | currency: "Rp "}}</span> - <span>{{special.price - (special.price * (special.disc/100)) | currency: "Rp"}}</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

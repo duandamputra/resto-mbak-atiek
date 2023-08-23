@@ -1,0 +1,27 @@
+<mat-card class="example-card">
+  <div class="wrap-img">
+    <img class="sold" *ngIf="items.available === 0" src="https://www.freeiconspng.com/thumbs/sold-out-png/sold-out-png-31.png" alt="me">
+    <img mat-card-image [src]="items.image" alt="me" />
+  </div>
+  <mat-card-title>{{ items.recipe_name }}</mat-card-title>
+  <mat-card-subtitle>{{"menu.available" | translate}}: {{ items.available }}</mat-card-subtitle>
+  <mat-card-content>
+    <p *ngIf="items.specialOver">
+      <span>{{items.price | currency: "Rp "}}</span>&nbsp;&nbsp;<span>{{items.price - (items.price * (items.disc/100)) | currency: "Rp "}}</span>
+    </p>
+    <p *ngIf="!items.specialOver">
+      {{ items.price | currency: "Rp " }}
+    </p>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button
+      [disabled]="items.available === 0"
+      mat-raised-button
+      color="primary"
+      (click)="openDialog(items)"
+    >
+    <mat-icon>add</mat-icon> {{"menu.add" | translate}}
+    </button>
+  </mat-card-actions>
+</mat-card>

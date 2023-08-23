@@ -1,0 +1,39 @@
+<h2>Special Offer</h2>
+<p>{{data.recipe_name}}</p>
+<mat-card-subtitle>Available: {{data.available}}</mat-card-subtitle>
+<form class="form" [formGroup]="myForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Amount</mat-label>
+    <input type="number" min="1" matInput formControlName="amount" />
+    <mat-error *ngIf="myForm.get('amount')?.errors?.['min']"
+      >must be greater than zero</mat-error
+    >
+    <mat-error *ngIf="myForm.get('amount')?.errors?.['max']"
+      >must be smaller than available</mat-error
+    >
+  </mat-form-field>
+  <br />
+  <mat-form-field appearance="fill">
+    <mat-label>Note</mat-label>
+    <input matInput formControlName="note" />
+  </mat-form-field>
+  <br />
+  <button
+    class="cancel"
+    mat-raised-button
+    color="warn"
+    (click)="onCancel()"
+    cdkFocusInitial
+  >
+    Cancel
+  </button>
+  <button
+    type="submit"
+    mat-raised-button
+    color="primary"
+    (click)="onSubmit()"
+    cdkFocusInitial
+  >
+    Submit
+  </button>
+</form>

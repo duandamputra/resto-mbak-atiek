@@ -1,0 +1,21 @@
+.wrap{
+  width: 1000px;
+  margin: 0 auto;
+  margin-top: 50px;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+table{
+  width: 1000px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.balance{
+  margin-top: 20px;
+  width: fit-content;
+  padding: 1rem;
+  background-color: whitesmoke;
+}
